@@ -10,7 +10,8 @@
 
 
     <modules>
-
+        <module>eureka-server</module>
+        <module>User-Service</module>
     </modules>
 
 
