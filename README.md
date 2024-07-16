@@ -65,10 +65,6 @@ spring:
     username: your-username
     password: your-password
     driver-class-name: com.mysql.cj.jdbc.Driver
-  jpa:
-    hibernate:
-      ddl-auto: update
-    show-sql: true
 
 eureka:
   client:
