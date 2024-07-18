@@ -17,8 +17,13 @@ public class User {
     Long id;
 
     @Column(name = "username")
-    String name;
+    String username;
 
     @Column(name = "email")
     String email;
+
+    public User(String name, String email) {
+        this.username = name;
+        this.email = email;
+    }
 }
