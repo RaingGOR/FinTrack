@@ -1,12 +1,12 @@
-package raingor.ru.userservice.service;
+package raingor.ru.userservice.services;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
-import raingor.ru.userservice.dto.UserDTO;
+import raingor.ru.userservice.dtos.UserDTO;
 import raingor.ru.userservice.exceptions.NotFoundUserException;
-import raingor.ru.userservice.model.User;
-import raingor.ru.userservice.repository.UserRepository;
+import raingor.ru.userservice.domain.User;
+import raingor.ru.userservice.repositories.UserRepository;
 
 import java.util.List;
 import java.util.stream.Collectors;

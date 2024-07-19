@@ -1,14 +1,14 @@
-package raingor.ru.userservice.controller;
+package raingor.ru.userservice.controllers;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import raingor.ru.userservice.dto.UserDTO;
-import raingor.ru.userservice.service.UserService;
+import raingor.ru.userservice.dtos.UserDTO;
+import raingor.ru.userservice.services.UserService;
 
 @RestController
-@RequestMapping("/api/users")
+@RequestMapping("/user-api/users")
 @RequiredArgsConstructor
 public class UserController {
     private final UserService userService;

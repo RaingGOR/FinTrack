@@ -1,4 +1,4 @@
-package raingor.ru.userservice.model;
+package raingor.ru.userservice.domain;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
