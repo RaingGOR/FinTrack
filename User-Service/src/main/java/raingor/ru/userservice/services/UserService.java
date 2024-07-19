@@ -32,13 +32,16 @@ public class UserService {
 
     public void updateUser(Long id, UserDTO updatedUser) {
         User user = userRepository.findById(id).orElseThrow(NotFoundUserException::new);
+
         user.setUsername(StringUtils.hasText(updatedUser.username()) ? updatedUser.username() : user.getUsername());
         user.setEmail(StringUtils.hasText(updatedUser.email()) ? updatedUser.email() : user.getEmail());
+
         userRepository.save(user);
     }
 
     public void deleteUser(Long id) {
         User user = userRepository.findById(id).orElseThrow(NotFoundUserException::new);
+
         userRepository.delete(user);
     }
 }
