@@ -4,12 +4,12 @@ spring:
   datasource:
     url: jdbc:mysql://localhost:3306/user_service
     username: root
-    password: mysql
+    password: password
     driver-class-name: com.mysql.cj.jdbc.Driver
   flyway:
     url: jdbc:mysql://localhost:3306/user_service
     user: root
-    password: mysql
+    password: password
     enabled: true
     baselineOnMigrate: true
 

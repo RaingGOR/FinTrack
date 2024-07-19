@@ -41,10 +41,10 @@ user-service/
 │   ├── main/
 │   │   ├── java/
 │   │   │   └── com.example.userservice/
-│   │   │       ├── controller/
-│   │   │       ├── model/
-│   │   │       ├── repository/
-│   │   │       └── service/
+│   │   │       ├── controllers/
+│   │   │       ├── models/
+│   │   │       ├── repositories/
+│   │   │       └── services/
 │   │   └── resources/
 │   │       └── application.yml
 ├── Dockerfile
@@ -60,21 +60,30 @@ user-service/
 **application.yml:**
 ```yaml
 spring:
+  application:
+    name: User-Service
   datasource:
-    url: jdbc:mysql://localhost:3306/userdb
-    username: your-username
-    password: your-password
+    url: jdbc:mysql://localhost:3306/user_service
+    username: username
+    password: password
     driver-class-name: com.mysql.cj.jdbc.Driver
+  flyway:
+    url: jdbc:mysql://localhost:3306/user_service
+    user: username
+    password: password
+    enabled: true
+    baselineOnMigrate: true
+
+server:
+  port: 8081
 
 eureka:
   client:
     service-url:
-      defaultZone: http://localhost:8761/eureka
+      defaultZone: http://localhost:8761/eureka/
   instance:
     prefer-ip-address: true
 
-server:
-  port: 8081
 ```
 #### 2. Transaction Service
 **Основные функции:**
@@ -88,10 +97,10 @@ transaction-service/
 │   ├── main/
 │   │   ├── java/
 │   │   │   └── com.example.transactionservice/
-│   │   │       ├── controller/
-│   │   │       ├── model/
-│   │   │       ├── repository/
-│   │   │       └── service/
+│   │   │       ├── controllers/
+│   │   │       ├── models/
+│   │   │       ├── repositories/
+│   │   │       └── services/
 │   │   └── resources/
 │   │       └── application.yml
 ├── Dockerfile
@@ -107,25 +116,30 @@ transaction-service/
 **application.yml:**
 ```yaml
 spring:
+  application:
+    name: Transaction-Service
   datasource:
-    url: jdbc:mysql://localhost:3306/transactiondb
-    username: your-username
-    password: your-password
+    url: jdbc:mysql://localhost:3306/transactional_service
+    username: root
+    password: password
     driver-class-name: com.mysql.cj.jdbc.Driver
-  jpa:
-    hibernate:
-      ddl-auto: update
-    show-sql: true
+  flyway:
+    url: jdbc:mysql://localhost:3306/transactional_service
+    user: root
+    password: password
+    enabled: true
+    baselineOnMigrate: true
+
+server:
+  port: 8082
 
 eureka:
   client:
     service-url:
-      defaultZone: http://localhost:8761/eureka
+      defaultZone: http://localhost:8761/eureka/
   instance:
     prefer-ip-address: true
 
-server:
-  port: 8082
 ```
 
 #### 3. Budget Service
@@ -140,10 +154,10 @@ budget-service/
 │   ├── main/
 │   │   ├── java/
 │   │   │   └── com.example.budgetservice/
-│   │   │       ├── controller/
-│   │   │       ├── model/
-│   │   │       ├── repository/
-│   │   │       └── service/
+│   │   │       ├── controllers/
+│   │   │       ├── modesl/
+│   │   │       ├── repositories/
+│   │   │       └── services/
 │   │   └── resources/
 │   │       └── application.yml
 ├── Dockerfile
