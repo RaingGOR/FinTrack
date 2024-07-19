@@ -1,0 +1,24 @@
+spring:
+  application:
+    name: Transaction-Service
+  datasource:
+    url: jdbc:mysql://localhost:3306/transactional_service
+    username: root
+    password: mysql
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  flyway:
+    url: jdbc:mysql://localhost:3306/transactional_service
+    user: root
+    password: mysql
+    enabled: true
+    baselineOnMigrate: true
+
+server:
+  port: 8082
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    prefer-ip-address: true
