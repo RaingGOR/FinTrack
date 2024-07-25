@@ -1,6 +1,7 @@
 package raingor.ru.transactionservice.services;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import raingor.ru.transactionservice.domain.Transaction;
 import raingor.ru.transactionservice.domain.TransactionStatus;
@@ -11,6 +12,7 @@ import raingor.ru.transactionservice.dtos.UpdatedTransactionDTO;
 import raingor.ru.transactionservice.exceptions.NotFoundTransactionException;
 import raingor.ru.transactionservice.mappers.TransactionMapper;
 import raingor.ru.transactionservice.repositories.TransactionRepository;
+import raingor.ru.transactionservice.specifications.TransactionSpecification;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -62,5 +64,34 @@ public class TransactionService {
         Transaction transaction = transactionRepository.findById(id).orElseThrow(NotFoundTransactionException::new);
 
         transactionRepository.deleteById(id);
+    }
+
+    public List<Transaction> getFilteredTransactions(Long senderId, Long recipientId, LocalDateTime date, Double amount,
+                                                     String description, String type, String status) {
+        Specification<Transaction> spec = Specification.where(null);
+
+        if (senderId != null) {
+            spec = spec.and(TransactionSpecification.hasSenderId(senderId));
+        }
+        if (recipientId != null) {
+            spec = spec.and(TransactionSpecification.hasRecipientId(recipientId));
+        }
+        if (date != null) {
+            spec = spec.and(TransactionSpecification.hasDate(date));
+        }
+        if (amount != null) {
+            spec = spec.and(TransactionSpecification.hasAmount(amount));
+        }
+        if (description != null) {
+            spec = spec.and(TransactionSpecification.hasDescription(description));
+        }
+        if (type != null) {
+            spec = spec.and(TransactionSpecification.hasType(type));
+        }
+        if (status != null) {
+            spec = spec.and(TransactionSpecification.hasStatus(status));
+        }
+
+        return transactionRepository.findAll(spec);
     }
 }
