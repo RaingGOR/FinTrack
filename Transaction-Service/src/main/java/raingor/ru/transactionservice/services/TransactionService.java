@@ -22,6 +22,7 @@ import java.util.List;
 public class TransactionService {
     private final TransactionRepository transactionRepository;
 
+    @Deprecated
     public List<FullTransactionDTO> getAllTransactions() {
         return transactionRepository.findAll().stream()
                 .map(TransactionMapper::TransactionToFullTransactionDTOMapper).toList();

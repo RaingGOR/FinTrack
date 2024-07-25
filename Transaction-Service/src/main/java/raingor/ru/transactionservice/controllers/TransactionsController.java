@@ -17,11 +17,6 @@ import java.time.LocalDateTime;
 public class TransactionsController {
     private final TransactionService transactionService;
 
-    @GetMapping
-    public ResponseEntity<?> getTransactions() {
-        return new ResponseEntity<>(transactionService.getAllTransactions(), HttpStatus.OK);
-    }
-
     @GetMapping("/{id}")
     public ResponseEntity<?> getTransaction(@PathVariable Long id) {
         return new ResponseEntity<>(transactionService.getTransaction(id), HttpStatus.FOUND);
@@ -46,8 +41,8 @@ public class TransactionsController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    // filtered
-    @GetMapping("/filter")
+    // используется теперь вместо findAllTransaction, ведь без фильтров по сути выдает все транзации
+    @GetMapping()
     public ResponseEntity<?> getFilteredListTransactions(@RequestParam(required = false) Long senderId,
                                                          @RequestParam(required = false) Long recipientId,
                                                          @RequestParam(required = false) LocalDateTime date,
