@@ -49,7 +49,7 @@ public class TransactionSpecification {
                 TransactionType transactionType = TransactionType.valueOf(type.toUpperCase());
                 return criteriaBuilder.equal(root.get("type"), transactionType);
             }catch (IllegalArgumentException e){
-                return criteriaBuilder.disjunction(); // Возвращаем "пустое" условие, если статус некорректен
+                return criteriaBuilder.disjunction();
             }
         };
     }
@@ -60,7 +60,7 @@ public class TransactionSpecification {
                 TransactionStatus transactionStatus = TransactionStatus.valueOf(status);
                 return criteriaBuilder.equal(root.get("status"), transactionStatus);
             } catch (IllegalArgumentException e) {
-                return criteriaBuilder.disjunction(); // Возвращаем "пустое" условие, если статус некорректен
+                return criteriaBuilder.disjunction();
             }
         };
     }
