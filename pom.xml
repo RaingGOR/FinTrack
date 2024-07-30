@@ -7,11 +7,14 @@
     <groupId>Raingor.ru</groupId>
     <artifactId>FinTrack</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
 
 
     <modules>
         <module>eureka-server</module>
         <module>User-Service</module>
+        <module>Transaction-Service</module>
+        <module>Client-Service</module>
     </modules>
 
 

@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ExternalStorageConfigurationManager" enabled="true" />
+  <component name="FrameworkDetectionExcludesConfiguration">
+    <file type="web" url="file://$PROJECT_DIR$/demo" />
+  </component>
   <component name="MavenProjectsManager">
     <option name="originalFiles">
       <list>
@@ -8,6 +11,8 @@
         <option value="$PROJECT_DIR$/User-Service/pom.xml" />
         <option value="$PROJECT_DIR$/eureka-server/pom.xml" />
         <option value="$PROJECT_DIR$/Transaction-Service/pom.xml" />
+        <option value="$PROJECT_DIR$/client-server/pom.xml" />
+        <option value="$PROJECT_DIR$/Client-Service/pom.xml" />
       </list>
     </option>
   </component>
