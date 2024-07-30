@@ -13,7 +13,7 @@ import java.util.List;
 
 
 @Component
-public class TransactionRestClientImpl implements TransactionRestClient {*
+public class TransactionRestClientImpl implements TransactionRestClient {
     private final WebClient.Builder webClientBuilder;
     private final LoadBalancerClient loadBalancerClient;
     private static final ParameterizedTypeReference<List<TransactionDTO>> TRANSACTION_LIST_TYPE
