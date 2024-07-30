@@ -9,6 +9,7 @@ import com.vaadin.flow.component.sidenav.SideNav;
 import com.vaadin.flow.component.sidenav.SideNavItem;
 import com.vaadin.flow.theme.lumo.LumoUtility;
 import raingor.ru.clientservice.views.ClientView;
+import raingor.ru.clientservice.views.TransactionView;
 
 // По сути мы тут делаем главную страницу
 public class MainLayout extends AppLayout {
@@ -33,8 +34,13 @@ public class MainLayout extends AppLayout {
         SideNav sideNav = new SideNav();
 
         SideNavItem clientProfileLink = new SideNavItem("Client Profile", ClientView.class);
+        SideNavItem adminPanelItem = new SideNavItem("Admin Panel");
+        adminPanelItem.addItem(new SideNavItem("All Users", ClientView.class));
+        adminPanelItem.addItem(new SideNavItem("All Transactions", TransactionView.class));
+
 
         sideNav.addItem(clientProfileLink);
+        sideNav.addItem(adminPanelItem);
 
         return sideNav;
     }
