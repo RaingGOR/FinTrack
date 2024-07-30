@@ -10,6 +10,7 @@ import com.vaadin.flow.component.sidenav.SideNavItem;
 import com.vaadin.flow.theme.lumo.LumoUtility;
 import raingor.ru.clientservice.views.ClientView;
 
+// По сути мы тут делаем главную страницу
 public class MainLayout extends AppLayout {
 
     public MainLayout() {
