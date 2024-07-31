@@ -1,6 +1,5 @@
 package raingor.ru.clientservice.services;
 
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import raingor.ru.clientservice.client.TransactionRestClientImpl;
 import raingor.ru.clientservice.dtos.TransactionDTO;

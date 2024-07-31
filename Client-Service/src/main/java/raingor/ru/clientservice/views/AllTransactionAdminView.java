@@ -14,12 +14,12 @@ import java.util.List;
 
 @Route(value = "transactions", layout = MainLayout.class)
 @PageTitle("Transaction List")
-public class TransactionView extends VerticalLayout {
+public class AllTransactionAdminView extends VerticalLayout {
 
     private final TransactionService transactionService;
 
     @Autowired
-    public TransactionView(TransactionService transactionService) {
+    public AllTransactionAdminView(TransactionService transactionService) {
         this.transactionService = transactionService;
         initialize();
     }

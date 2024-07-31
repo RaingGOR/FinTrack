@@ -3,6 +3,7 @@ package raingor.ru.userservice.services;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
+import raingor.ru.userservice.dtos.FullUserDTO;
 import raingor.ru.userservice.dtos.UserDTO;
 import raingor.ru.userservice.exceptions.NotFoundUserException;
 import raingor.ru.userservice.domain.User;
@@ -21,8 +22,8 @@ public class UserService {
         return new UserDTO(user.getUsername(), user.getEmail());
     }
 
-    public List<UserDTO> getAllUsers() {
-        return userRepository.findAll().stream().map(x -> new UserDTO(x.getUsername(), x.getEmail()))
+    public List<FullUserDTO> getAllUsers() {
+        return userRepository.findAll().stream().map(x -> new FullUserDTO(x.getId(), x.getUsername(), x.getEmail()))
                 .collect(Collectors.toList());
     }
 

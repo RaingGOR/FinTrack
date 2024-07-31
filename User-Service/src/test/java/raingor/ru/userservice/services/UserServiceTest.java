@@ -8,6 +8,7 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import raingor.ru.userservice.FakeDomain;
 import raingor.ru.userservice.domain.User;
+import raingor.ru.userservice.dtos.FullUserDTO;
 import raingor.ru.userservice.dtos.UserDTO;
 import raingor.ru.userservice.repositories.UserRepository;
 
@@ -48,7 +49,7 @@ class UserServiceTest {
     void getAllUsers() {
         when(userRepository.findAll()).thenReturn(List.of(fakeUser));
 
-        List<UserDTO> testedUsers = userService.getAllUsers();
+        List<FullUserDTO> testedUsers = userService.getAllUsers();
         List<UserDTO> fakeUsers = List.of(fakeUser).stream()
                 .map(x -> new UserDTO(x.getUsername(), x.getEmail())).toList();
 

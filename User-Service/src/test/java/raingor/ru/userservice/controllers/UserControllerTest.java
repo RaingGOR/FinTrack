@@ -10,6 +10,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+import raingor.ru.userservice.dtos.FullUserDTO;
 import raingor.ru.userservice.dtos.UserDTO;
 import raingor.ru.userservice.exceptions.NotFoundUserException;
 import raingor.ru.userservice.services.UserService;
@@ -40,7 +41,7 @@ class UserControllerTest {
 
     @Test
     void getAllUsers() throws Exception {
-        when(userService.getAllUsers()).thenReturn(List.of(new UserDTO("", "")));
+        when(userService.getAllUsers()).thenReturn(List.of(new FullUserDTO("", "", "")));
 
         mockMvc.perform(get("/user-api/users"))
                 .andExpect(status().isOk())
@@ -76,6 +77,7 @@ class UserControllerTest {
                 .andExpect(status().isOk());
 
     }
+
     @Test
     void updateUser_userNotFound() throws Exception {
         UserDTO updatedUser = new UserDTO("NewUsername", "newemail@example.com");
@@ -87,6 +89,7 @@ class UserControllerTest {
                         .content(objectMapper.writeValueAsString(updatedUser)))
                 .andExpect(status().isBadRequest());
     }
+
     @Test
     void deleteUser() throws Exception {
         mockMvc.perform(delete("/user-api/users/{id}", 1L))
