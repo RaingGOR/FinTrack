@@ -1,195 +1,43 @@
 # FinTrack
-### Финансовое приложение с использованием микросервисов
-### Описание: 
-#### Финансовое приложение для управления личными финансами, где пользователи могут отслеживать доходы, расходы и создавать бюджеты.
+
+___
+
+### Описание проекта:
+
+#### Финансовое приложение для управления личными финансами, где пользователи могут отслеживать доходы, расходы и создавать бюджеты. Приложение написано на Maven с использованием Java 21, микросервисной архитектуры и фреймворка Spring boot 3.3. Так же в проекте использованы база данных MySQL, Vaadin, Spring Security, Eureka, Flyaway, Lombok, Spring Cloud, WebFlux, LoadBalancer и многие другие технологии.
+
+___
 
 ### Архитектура проекта
 
 #### Микросервисы:
-1. **User Service**: регистрация и управление пользователями.
-2. **Transaction Service**: управление финансовыми транзакциями.
-3. **Budget Service**: управление бюджетами и категориями расходов.
-4. **eureka-server**: управление микросервисами по хосту http://localhost:8761/
+
+1. **_Eureka-Server_** - регистрация и поиск микросервисов | Базовый порт:   http://localhost:8761/
+2. **_Client-Service_** - фронтэнд часть написанная на **Java**+**Vaadin** | Базовый порт: http://localhost:8083/
+3. **_Transaction-Service_** - управление транзакциями | Базовый порт: http://localhost:8082/
+4. **_User-Service_** - управление пользователями | Базовый порт: http://localhost:8081/
+5. `IN FUTURE`
+
 #### Базы данных:
-- **MySQL**: хранение финансовых транзакций и пользовательских данных.
-- **MongoDB**: управление сессиями и кэширование.
+
+- **MySQL**: в каждом микросервисе собственная база данных
+- **FlyAway**: дополнительный инструмент для управление базой данных в каждом микросервисе
 
 ### Основные технологии и инструменты
-- **Java 11+**
+
+- **Java 21**
 - **Spring Boot**
 - **Spring Data JPA**
-- **Spring Data MongoDB**
+- **Spring Data WebFlux**
 - **Spring Cloud**
 - **Docker**
-- **Eureka** (для сервис-дискавери)
-- **Spring Cloud Gateway** (для API Gateway)
-- **Spring Security** (для авторизации и аутентификации)
-- **Docker Compose** (для управления контейнерами)
+- **Eureka**
+- **Spring Cloud Gateway**
+- **Spring Security**
+- **Docker Compose**
+- **Lombok**
+- **MySQL**
+- **Spring Boot Validation**
+- **LoadBalancer**
+- **Vaadin**
 
-### Описание микросервисов
-
-#### 1. User Service
-**Основные функции:**
-- Регистрация пользователей
-- Аутентификация и авторизация
-- Управление профилями пользователей
-
-**Структура проекта:**
-```plaintext
-user-service/
-├── src/
-│   ├── main/
-│   │   ├── java/
-│   │   │   └── com.example.userservice/
-│   │   │       ├── controllers/
-│   │   │       ├── models/
-│   │   │       ├── repositories/
-│   │   │       └── services/
-│   │   └── resources/
-│   │       └── application.yml
-├── Dockerfile
-└── pom.xml
-```
-
-**Основные классы:**
-- `UserController`: управление запросами пользователя.
-- `User`: сущность пользователя.
-- `UserRepository`: интерфейс для взаимодействия с базой данных.
-- `UserService`: бизнес-логика для управления пользователями.
-
-**application.yml:**
-```yaml
-spring:
-  application:
-    name: User-Service
-  datasource:
-    url: jdbc:mysql://localhost:3306/user_service
-    username: username
-    password: password
-    driver-class-name: com.mysql.cj.jdbc.Driver
-  flyway:
-    url: jdbc:mysql://localhost:3306/user_service
-    user: username
-    password: password
-    enabled: true
-    baselineOnMigrate: true
-
-server:
-  port: 8081
-
-eureka:
-  client:
-    service-url:
-      defaultZone: http://localhost:8761/eureka/
-  instance:
-    prefer-ip-address: true
-
-```
-#### 2. Transaction Service
-**Основные функции:**
-- Добавление и управление транзакциями
-- Просмотр истории транзакций
-
-**Структура проекта:**
-```plaintext
-transaction-service/
-├── src/
-│   ├── main/
-│   │   ├── java/
-│   │   │   └── com.example.transactionservice/
-│   │   │       ├── controllers/
-│   │   │       ├── models/
-│   │   │       ├── repositories/
-│   │   │       └── services/
-│   │   └── resources/
-│   │       └── application.yml
-├── Dockerfile
-└── pom.xml
-```
-
-**Основные классы:**
-- `TransactionController`: управление запросами транзакций.
-- `Transaction`: сущность транзакции.
-- `TransactionRepository`: интерфейс для взаимодействия с базой данных.
-- `TransactionService`: бизнес-логика для управления транзакциями.
-
-**application.yml:**
-```yaml
-spring:
-  application:
-    name: Transaction-Service
-  datasource:
-    url: jdbc:mysql://localhost:3306/transactional_service
-    username: root
-    password: password
-    driver-class-name: com.mysql.cj.jdbc.Driver
-  flyway:
-    url: jdbc:mysql://localhost:3306/transactional_service
-    user: root
-    password: password
-    enabled: true
-    baselineOnMigrate: true
-
-server:
-  port: 8082
-
-eureka:
-  client:
-    service-url:
-      defaultZone: http://localhost:8761/eureka/
-  instance:
-    prefer-ip-address: true
-
-```
-
-#### 3. Budget Service
-**Основные функции:**
-- Создание и управление бюджетами
-- Классификация расходов по категориям
-
-**Структура проекта:**
-```plaintext
-budget-service/
-├── src/
-│   ├── main/
-│   │   ├── java/
-│   │   │   └── com.example.budgetservice/
-│   │   │       ├── controllers/
-│   │   │       ├── modesl/
-│   │   │       ├── repositories/
-│   │   │       └── services/
-│   │   └── resources/
-│   │       └── application.yml
-├── Dockerfile
-└── pom.xml
-```
-
-**Основные классы:**
-- `BudgetController`: управление запросами бюджетов.
-- `Budget`: сущность бюджета.
-- `BudgetRepository`: интерфейс для взаимодействия с базой данных.
-- `BudgetService`: бизнес-логика для управления бюджетами.
-
-**application.yml:**
-```yaml
-spring:
-  datasource:
-    url: jdbc:mysql://localhost:3306/budgetdb
-    username: your-username
-    password: your-password
-    driver-class-name: com.mysql.cj.jdbc.Driver
-  jpa:
-    hibernate:
-      ddl-auto: update
-    show-sql: true
-
-eureka:
-  client:
-    service-url:
-      defaultZone: http://localhost:8761/eureka
-  instance:
-    prefer-ip-address: true
-
-server:
-  port: 8083
-```
