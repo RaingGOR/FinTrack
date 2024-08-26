@@ -1,6 +1,6 @@
 package raingor.ru.clientservice.client;
 
-import raingor.ru.clientservice.dtos.UserDTO;
+import raingor.ru.clientservice.client.dtos.UserDTO;
 
 import java.util.List;
 

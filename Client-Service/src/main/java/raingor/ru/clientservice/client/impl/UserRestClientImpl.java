@@ -7,7 +7,7 @@ import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.client.WebClient;
 import raingor.ru.clientservice.client.UserRestClient;
-import raingor.ru.clientservice.dtos.UserDTO;
+import raingor.ru.clientservice.client.dtos.UserDTO;
 
 import java.util.List;
 

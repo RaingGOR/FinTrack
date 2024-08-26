@@ -1,8 +1,8 @@
-package raingor.ru.clientservice.services;
+package raingor.ru.clientservice.client.services;
 
 import org.springframework.stereotype.Service;
 import raingor.ru.clientservice.client.impl.TransactionRestClientImpl;
-import raingor.ru.clientservice.dtos.TransactionDTO;
+import raingor.ru.clientservice.client.dtos.TransactionDTO;
 
 import java.util.List;
 

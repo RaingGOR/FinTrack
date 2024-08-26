@@ -30,20 +30,22 @@ public class MainLayout extends AppLayout {
         addToNavbar(toggle, title);
     }
 
+    // боковая навигация
     private SideNav getSideNav() {
-        SideNav sideNav = new SideNav();
+        SideNav sideNavigator = new SideNav();
 
-        SideNavItem clientProfileLink = new SideNavItem("Client Profile", ClientView.class);
+        SideNavItem clientProfileLinkItem = new SideNavItem("Client Profile", ClientView.class);
         SideNavItem adminPanelItem = new SideNavItem("Admin Panel");
+
         adminPanelItem.addItem(new SideNavItem("All Users", AllUsersAdminView.class));
         adminPanelItem.addItem(new SideNavItem("All Transactions", AllTransactionAdminView.class));
 
+        sideNavigator.addItem(clientProfileLinkItem);
+        sideNavigator.addItem(adminPanelItem);
 
-        sideNav.addItem(clientProfileLink);
-        sideNav.addItem(adminPanelItem);
-
-        return sideNav;
+        return sideNavigator;
     }
 
 
 }
+

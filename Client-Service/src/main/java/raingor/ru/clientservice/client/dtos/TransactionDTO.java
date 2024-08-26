@@ -1,4 +1,4 @@
-package raingor.ru.clientservice.dtos;
+package raingor.ru.clientservice.client.dtos;
 
 import java.time.LocalDateTime;
 

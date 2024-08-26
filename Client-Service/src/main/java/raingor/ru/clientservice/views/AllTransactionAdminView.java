@@ -6,9 +6,9 @@ import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import org.springframework.beans.factory.annotation.Autowired;
-import raingor.ru.clientservice.dtos.TransactionDTO;
+import raingor.ru.clientservice.client.dtos.TransactionDTO;
 import raingor.ru.clientservice.layouts.MainLayout;
-import raingor.ru.clientservice.services.TransactionService;
+import raingor.ru.clientservice.client.services.TransactionService;
 
 import java.util.List;
 

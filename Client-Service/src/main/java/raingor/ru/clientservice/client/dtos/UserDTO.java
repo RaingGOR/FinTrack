@@ -1,4 +1,4 @@
-package raingor.ru.clientservice.dtos;
+package raingor.ru.clientservice.client.dtos;
 
 public record UserDTO(
         Long id,
