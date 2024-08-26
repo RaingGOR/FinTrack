@@ -5,7 +5,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.reactive.function.client.WebClient;
 import raingor.ru.clientservice.client.TransactionRestClient;
-import raingor.ru.clientservice.client.TransactionRestClientImpl;
+import raingor.ru.clientservice.client.impl.TransactionRestClientImpl;
 
 @Configuration
 public class AppConfig {
@@ -17,7 +17,8 @@ public class AppConfig {
     }
 
     @Bean
-    public TransactionRestClient transactionRestClient(WebClient.Builder webClientBuilder, LoadBalancerClient loadBalancerClient) {
+    public TransactionRestClient transactionRestClient(WebClient.Builder webClientBuilder,
+                                                       LoadBalancerClient loadBalancerClient) {
         return new TransactionRestClientImpl(webClientBuilder, loadBalancerClient);
     }
 }

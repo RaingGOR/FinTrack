@@ -2,7 +2,7 @@ package raingor.ru.clientservice.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import raingor.ru.clientservice.client.UserRestClientImpl;
+import raingor.ru.clientservice.client.impl.UserRestClientImpl;
 import raingor.ru.clientservice.dtos.UserDTO;
 
 import java.util.List;

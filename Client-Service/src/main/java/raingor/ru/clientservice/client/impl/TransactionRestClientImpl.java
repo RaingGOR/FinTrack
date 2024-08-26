@@ -1,4 +1,4 @@
-package raingor.ru.clientservice.client;
+package raingor.ru.clientservice.client.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
@@ -7,6 +7,7 @@ import org.springframework.core.ParameterizedTypeReference;
 
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.client.WebClient;
+import raingor.ru.clientservice.client.TransactionRestClient;
 import raingor.ru.clientservice.dtos.TransactionDTO;
 
 import java.util.List;

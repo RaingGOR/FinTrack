@@ -23,7 +23,8 @@ public class UserService {
     }
 
     public List<FullUserDTO> getAllUsers() {
-        return userRepository.findAll().stream().map(x -> new FullUserDTO(x.getId(), x.getUsername(), x.getEmail()))
+        return userRepository.findAll().stream().map(x ->
+                        new FullUserDTO(x.getId(), x.getUsername(), x.getEmail(), x.getPassword()))
                 .collect(Collectors.toList());
     }
 

@@ -22,6 +22,9 @@ public class User {
     @Column(name = "email")
     String email;
 
+    @Column(name = "password")
+    String password;
+
     public User(String name, String email) {
         this.username = name;
         this.email = email;
